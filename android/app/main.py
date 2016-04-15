@@ -222,7 +222,8 @@ class Skelly(App):
 
 	def build(self):
 		#Android back mapping
-		android.map_key(android.KEYCODE_BACK,1001)
+		#android.map_key(android.KEYCODE_BACK,1001)
+
 		win = Window
 		win.bind(on_keyboard=self.key_handler)
 		win.clearcolor = (1,1,1,1)
