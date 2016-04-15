@@ -3,7 +3,7 @@ import globalvars
 from jnius import autoclass
 Intent = autoclass('android.content.Intent')
 Uri = autoclass('android.net.Uri')
-PythonActivity = autoclass('org.renpy.android.PythonActivity')
+PythonActivity = autoclass('org.kivy.android.PythonActivity')
 
 
 def open_player(uri):

@@ -25,7 +25,7 @@ Environment = autoclass('android.os.Environment')
 Uri = autoclass('android.net.Uri')
 
 SurfaceView = autoclass('android.view.SurfaceView')
-PythonActivity = autoclass('org.renpy.android.PythonActivity')
+PythonActivity = autoclass('org.kivy.android.PythonActivity')
 LayoutParams = autoclass('android.view.ViewGroup$LayoutParams')
 ImageFormat = autoclass('android.graphics.ImageFormat')
 LinearLayout = autoclass('android.widget.LinearLayout')

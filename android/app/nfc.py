@@ -2,7 +2,7 @@ __all__ = ('CreateNfcBeamUrisCallback')
 
 from jnius import PythonJavaClass, java_method, autoclass, cast
 
-PythonActivity = autoclass('org.renpy.android.PythonActivity')
+PythonActivity = autoclass('org.kivy.android.PythonActivity')
 mContext = autoclass('android.content.Context')
 NfcAdapter = autoclass('android.nfc.NfcAdapter')
 NfcManager = autoclass('android.nfc.NfcManager')

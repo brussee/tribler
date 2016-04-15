@@ -3,7 +3,7 @@ from jnius import autoclass, cast, PythonJavaClass, java_method
 
 import globalvars
 
-PythonActivity = autoclass('org.renpy.android.PythonActivity')
+PythonActivity = autoclass('org.kivy.android.PythonActivity')
 activity = PythonActivity.mActivity
 Context = autoclass('android.content.Context')
 File = autoclass('java.io.File')

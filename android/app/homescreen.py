@@ -27,7 +27,7 @@ from filewidget import FileWidget
 from camerahelper import CameraHelper
 
 Context = autoclass('android.content.Context')
-PythonActivity = autoclass('org.renpy.android.PythonActivity')
+PythonActivity = autoclass('org.kivy.android.PythonActivity')
 activity = PythonActivity.mActivity
 Intent = autoclass('android.content.Intent')
 Environment = autoclass('android.os.Environment')

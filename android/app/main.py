@@ -38,8 +38,7 @@ from filereceiver import FileReceiver
 from filescanner import FileScanner
 
 Context = autoclass('android.content.Context')
-PythonActivity = autoclass('org.renpy.android.PythonActivity')
-activity = PythonActivity.mActivity
+PythonActivity = autoclass('org.kivy.android.PythonActivity')
 Intent = autoclass('android.content.Intent')
 Uri = autoclass('android.net.Uri')
 NfcAdapter = autoclass('android.nfc.NfcAdapter')
@@ -176,15 +175,15 @@ class Skelly(App):
 	#Method that request the device's NFC adapter and adds a Callback function to it to activate on an Android Beam Intent.
 	def nfc_init(self):
 		#Request the Activity to obtain the NFC Adapter and later add it to the Callback.
-		self.j_context = context = activity
-		self.adapter = NfcAdapter.getDefaultAdapter(context)
+		self.j_context = activity = PythonActivity.mActivity
+		self.adapter = NfcAdapter.getDefaultAdapter(activity)
 
 		#Only activate the NFC functionality if the device supports it.
 		if self.adapter is not None:
 			#global nfcCallback
 			globalvars.nfcCallback = CreateNfcBeamUrisCallback()
-			globalvars.nfcCallback.addContext(context)
-			self.adapter.setBeamPushUrisCallback(globalvars.nfcCallback, context)
+			globalvars.nfcCallback.addContext(activity)
+			self.adapter.setBeamPushUrisCallback(globalvars.nfcCallback, activity)
 
 	def registerListeners(self):
 		self.intentListener = FileReceiver()
@@ -196,6 +195,7 @@ class Skelly(App):
 		self.intentListener.onNewIntent(activity.getIntent())
 
 	def makeLocalFolder(self):
+		activity = PythonActivity.mActivity
 		self.act = cast(Context, activity)
 		globalvars.scanner = FileScanner(self.act)
 

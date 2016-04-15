@@ -5,7 +5,7 @@ from kivy.properties import ObjectProperty
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
 
-PythonActivity = autoclass('org.renpy.android.PythonActivity')
+PythonActivity = autoclass('org.kivy.android.PythonActivity')
 LayoutParams = autoclass('android.view.ViewGroup$LayoutParams')
 LinearLayout = autoclass('android.widget.LinearLayout')
 

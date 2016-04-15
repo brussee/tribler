@@ -31,7 +31,7 @@ from android.runnable import run_on_ui_thread
 import android
 
 Context = autoclass('android.content.Context')
-PythonActivity = autoclass('org.renpy.android.PythonActivity')
+PythonActivity = autoclass('org.kivy.android.PythonActivity')
 activity = PythonActivity.mActivity
 Uri = autoclass('android.net.Uri')
 MediaStore = autoclass('android.provider.MediaStore')

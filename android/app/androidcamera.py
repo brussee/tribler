@@ -2,7 +2,7 @@ __all__ = ['PreviewCallback', 'SurfaceHolderCallback', 'AndroidCamera']
 
 from jnius import autoclass, PythonJavaClass, java_method, cast
 
-PythonActivity = autoclass('org.renpy.android.PythonActivity')
+PythonActivity = autoclass('org.kivy.android.PythonActivity')
 AudioSource = autoclass('android.media.MediaRecorder$AudioSource')
 CamcorderProfile = autoclass('android.media.CamcorderProfile')
 Camera = autoclass('android.hardware.Camera')
