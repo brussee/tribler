@@ -241,7 +241,9 @@ class DownloadManager(BaseManager):
 
         # Niels: first remove all "swift" torrent collect checkpoints
         dir = self._session.get_downloads_pstate_dir()
-        coldir = os.path.basename(os.path.abspath(self._session.get_torrent_collecting_dir()))
+        coldir = self._session.get_torrent_collecting_dir()
+        if (coldir):
+            coldir = os.path.basename(os.path.abspath(coldir))
 
         filelist = os.listdir(dir)
         filelist = [os.path.join(dir, filename) for filename in filelist if filename.endswith('.state')]
