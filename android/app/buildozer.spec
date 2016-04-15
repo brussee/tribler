@@ -7,7 +7,7 @@ title = ShadowInternet
 package.name = shadowinternet
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.tribler
+package.domain = org.tribler.android
 
 # (str) Source code where the main.py live
 source.dir = .
