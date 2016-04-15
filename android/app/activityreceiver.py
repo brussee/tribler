@@ -8,7 +8,7 @@ File = autoclass('java.io.File')
 
 #Class that handles the result from the Camera Activity that is started to record videos
 class ActivityReceiver(PythonJavaClass):
-	__javainterfaces__ = ['org/renpy/android/PythonActivity$ActivityResultListener']
+	__javainterfaces__ = ['org/kivy/android/PythonActivity$ActivityResultListener']
 	__javacontext__ = 'app'
 
 	#Method that functions as the Android Activity Classes' onActivityResult method

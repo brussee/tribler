@@ -192,7 +192,7 @@ class Skelly(App):
 		self.activityListener = ActivityReceiver()
 		PythonActivity.registerActivityResultListener(self.activityListener)
 
-		self.intentListener.onNewIntent(activity.getIntent())
+		self.intentListener.onNewIntent(PythonActivity.mActivity.getIntent())
 
 	def makeLocalFolder(self):
 		activity = PythonActivity.mActivity

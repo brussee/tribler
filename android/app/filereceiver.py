@@ -12,7 +12,7 @@ MediaColumns = autoclass('android.provider.MediaStore$MediaColumns')
 MediaStore = autoclass('android.provider.MediaStore')
 
 class FileReceiver(PythonJavaClass):
-	__javainterfaces__ = ['org/renpy/android/PythonActivity$NewIntentListener']
+	__javainterfaces__ = ['org/kivy/android/PythonActivity$NewIntentListener']
 	__javacontext__ = 'app'
 
 	@java_method('(Landroid/content/Intent;)V')
