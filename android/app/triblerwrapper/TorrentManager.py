@@ -52,7 +52,7 @@ class TorrentManager(BaseManager):
             self._remote_lock = threading.Lock()
 
             self._torrent_db = self._session.open_dbhandler(NTFY_TORRENTS)
-            self._metadata_db = self._session.open_dbhandler(NTFY_METADATA)
+            #self._metadata_db = self._session.open_dbhandler(NTFY_METADATA)
             self._channelcast_db = self._session.open_dbhandler(NTFY_CHANNELCAST)
             self._votecast_db = self._session.open_dbhandler(NTFY_VOTECAST)
 
