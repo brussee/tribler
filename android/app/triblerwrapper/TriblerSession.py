@@ -123,7 +123,7 @@ class TriblerSession(BaseManager):
         from Tribler.community.allchannel.community import AllChannelCommunity
         from Tribler.community.channel.community import ChannelCommunity
         from Tribler.community.channel.preview import PreviewChannelCommunity
-        from Tribler.community.metadata.community import MetadataCommunity
+        #from Tribler.community.metadata.community import MetadataCommunity
 
         Logger.info("Preparing to load dispersy communities...")
 
