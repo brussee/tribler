@@ -21,10 +21,6 @@ from Tribler.Core.SessionConfig import SessionStartupConfig
 class Options(usage.Options):
     optParameters = [
         ["manhole", "m", 0, "Enable manhole telnet service listening at the specified port", int],
-        ["statedir", "s", None, "Use an alternate statedir", str],
-        ["restapi", "p", 8085, "Use an alternate port for the REST API", int],
-        ["dispersy", "d", -1, "Use an alternate port for Dispersy", int],
-        ["libtorrent", "l", -1, "Use an alternate port for libtorrent", int],
     ]
 
 
@@ -41,7 +37,7 @@ class TriblerServiceMaker(object):
         self.session = None
         self._stopping = False
 
-    def start_tribler(self, options):
+    def start_tribler(self):
         """
         Main method to startup Tribler.
         """
@@ -59,20 +55,7 @@ class TriblerServiceMaker(object):
         msg("Starting Tribler")
 
         config = SessionStartupConfig()
-
-        if options["statedir"]:
-            config.set_state_dir(options["statedir"])
-
-        if options["restapi"] != 0:
-            config.set_http_api_enabled(True)
-            config.set_http_api_port(options["restapi"])
-
-        if options["dispersy"] != -1:
-            config.set_dispersy_port(options["dispersy"])
-
-        if options["libtorrent"] != -1:
-            config.set_listen_port(options["libtorrent"])
-
+        config.set_http_api_enabled(True)
         self.session = Session(config)
         upgrader = self.session.prestart()
         if upgrader.failed:
@@ -101,7 +84,7 @@ class TriblerServiceMaker(object):
             })
             tribler_service.addService(manhole)
 
-        reactor.callWhenRunning(self.start_tribler, options)
+        reactor.callWhenRunning(self.start_tribler)
 
         return tribler_service
 

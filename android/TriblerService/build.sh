@@ -13,4 +13,4 @@ cp -R bootstraps ~/.local/lib/python2.7/site-packages/pythonforandroid/
 cp -R recipes ~/.local/lib/python2.7/site-packages/pythonforandroid/
 
 echo Start build APK
-script -c "p4a --force-build --require-perfect-match --copy-libs --debug apk" # uses .p4a config file
+script -c "p4a create" # uses .p4a config file
