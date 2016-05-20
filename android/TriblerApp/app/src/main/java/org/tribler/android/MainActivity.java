@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity
         if (navigationView != null) {
             navigationView.setNavigationItemSelectedListener(this);
         }
+
+        ServiceTriblerd.start(this, "");
     }
 
     @Override
