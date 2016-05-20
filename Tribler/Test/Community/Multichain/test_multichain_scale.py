@@ -26,6 +26,9 @@ class TestMultiChainScale(DispersyTestFunc):
         Session.del_instance()
         DispersyTestFunc.tearDown(self)
 
+    def runTest(self):
+        self.test_schedule_many_blocks(blocks_in_thousands=10)
+
     def test_schedule_many_blocks(self, blocks_in_thousands=10):
         """
         Test the schedule_block function.
