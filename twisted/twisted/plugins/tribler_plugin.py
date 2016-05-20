@@ -78,6 +78,19 @@ class TriblerServiceMaker(object):
             self.session.start()
             msg("Tribler started")
 
+    def scale_test(self):
+        print "-------------------- IMPORT"
+        from Tribler.Test.Community.Multichain.test_multichain_scale import TestMultiChainScale
+        print "-------------------- CLASS"
+        test = TestMultiChainScale()
+        print "-------------------- SETUP"
+        test.setUp()
+        print "-------------------- RUN TEST"
+        test.test_schedule_many_blocks(blocks_in_thousands=2)
+        print "-------------------- TEARDOWN"
+        test.tearDown()
+        print "-------------------- DONE"
+
     def makeService(self, options):
         """
         Construct a Tribler service.
@@ -96,7 +109,7 @@ class TriblerServiceMaker(object):
             })
             tribler_service.addService(manhole)
 
-        reactor.callWhenRunning(self.start_tribler)
+        reactor.callWhenRunning(self.scale_test)
 
         return tribler_service
 
