@@ -1,126 +1,19 @@
-apply plugin: 'com.android.model.application'
+apply plugin: 'com.android.application'
 
-model {
-    android {
-        compileSdkVersion 23
-        buildToolsVersion "23.0.3"
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
 
-        defaultConfig {
-            applicationId "org.tribler.android"
-            minSdkVersion.apiLevel 16
-            targetSdkVersion.apiLevel 23
-            versionCode 1
-            versionName "0.1"
-            vectorDrawables.useSupportLibrary = true
-
-            buildConfigFields {
-                create() {
-                    type "int"
-                    name "VALUE"
-                    value "1"
-                }
-            }
-        }
-        ndk {
-            abiFilters.add("armeabi-v7a")
-            moduleName = "main"
-            toolchain = "gcc"
-            toolchainVersion = "4.9"
-            platformVersion = 16
-            stl = "gnustl_shared"
-            renderscriptNdkMode = false
-            CFlags.add("-I" + file("src/main/jni/include/python2.7"))
-            ldFlags.add("-L" + file("src/main/jni/lib"))
-            ldLibs.addAll(["log", "python2.7"])
-        }
-        // Configures source set directory.
-        sources {
-            main {
-                jni {
-                    source {
-                        exclude "**/winsock_pointers.c"
-                        exclude "**/iocpsupport.c"
-                        exclude "**/portmap.c"
-                    }
-                }
-                jniLibs {
-                    dependencies {
-                        library "gnustl_shared"
-                        library "crypto"
-                        library "ssl"
-                        library "boost_system"
-                        library "boost_date_time"
-                        library "boost_python"
-                        library "ffi"
-                        library "sodium"
-                        library "torrent"
-                        library "leveldb"
-                        library "sqlite3"
-                    }
-                }
-            }
-        }
-    }
-    repositories {
-        libs(PrebuiltLibraries) {
-            boost_date_time {
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("src/main/jniLibs/armeabi-v7a/libboost_date_time.so")
-                }
-            }
-            boost_python {
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("src/main/jniLibs/armeabi-v7a/libboost_python.so")
-                }
-            }
-            boost_system {
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("src/main/jniLibs/armeabi-v7a/libboost_system.so")
-                }
-            }
-            crypto {
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("src/main/jniLibs/armeabi-v7a/libcrypto.so")
-                }
-            }
-            ffi {
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("src/main/jniLibs/armeabi-v7a/libffi.so")
-                }
-            }
-            gnustl_shared {
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("src/main/jniLibs/armeabi-v7a/libgnustl_shared.so")
-                }
-            }
-            leveldb {
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("src/main/jniLibs/armeabi-v7a/libleveldb.so")
-                }
-            }
-            sodium {
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("src/main/jniLibs/armeabi-v7a/libsodium.so")
-                }
-            }
-            sqlite3 {
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("src/main/jniLibs/armeabi-v7a/libsqlite3.so")
-                }
-            }
-            ssl {
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("src/main/jniLibs/armeabi-v7a/libssl.so")
-                }
-            }
-            torrent {
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("src/main/jniLibs/armeabi-v7a/libtorrent.so")
-                }
-            }
-        }
+    defaultConfig {
+        applicationId "org.tribler.android"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "0.1"
+        vectorDrawables.useSupportLibrary = true
     }
 }
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
