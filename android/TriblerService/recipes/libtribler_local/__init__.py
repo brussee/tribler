@@ -14,7 +14,7 @@ class LocalTriblerRecipe(PythonRecipe):
 
     depends = ['apsw', 'cryptography', 'libsodium', 'libtorrent', 'm2crypto',
                'netifaces', 'openssl', 'pil', 'pycrypto', 'pyleveldb', 'python2',
-               'setuptools', 'twisted', 'coverage==2.85',
+               'setuptools', 'twisted', 'coverage',
               ]
 
     python_depends = ['chardet', 'cherrypy', 'configobj', 'decorator', 'feedparser',
