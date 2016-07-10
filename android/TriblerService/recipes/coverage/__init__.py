@@ -7,9 +7,11 @@ class CoverageRecipe(PythonRecipe):
 
     url = 'http://nedbatchelder.com/code/modules/coverage-{version}.tar.gz'
 
-    depends = ['hostpython2']
+    depends = ['hostpython2', 'setuptools']
 
     site_packages_name = 'coverage'
+
+    call_hostpython_via_targetpython = False
 
 
 recipe = CoverageRecipe()
