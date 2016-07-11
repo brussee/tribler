@@ -1,5 +1,4 @@
 import os
-from shutil import rmtree
 
 
 class Triblerd(object):
@@ -19,8 +18,7 @@ class Triblerd(object):
         Start reactor with service argument
         '''
         from twisted.internet import reactor
-
-        from tribler_plugin import service_maker, Options
+        from tribler_plugin import Options, service_maker
 
         options = Options()
         Options.parseOptions(options, os.getenv('PYTHON_SERVICE_ARGUMENT', '').split())
@@ -31,30 +29,40 @@ class Triblerd(object):
         '''
         Run all tests with nose and xcoverage
         '''
+        import mock
+
         # Mock native _multiprocessing module
         class _multiprocessing(object):
             pass
         import sys
         sys.modules["_multiprocessing"] = _multiprocessing
 
-        import coverage
-        import nose
+        @mock.patch('coverage.misc.output_encoding', return_value='utf-8')
+        def test_inner(output_encoding):
+            from coverage.misc import NotPython, CoverageException, output_encoding
+            print output_encoding()
 
-        # Clean output directory
-        OUTPUT_DIR = os.path.abspath('output')
-        if os.path.exists(OUTPUT_DIR):
-            rmtree(OUTPUT_DIR, ignore_errors=True)
-        os.mkdir(OUTPUT_DIR)
+            import shutil
+            import nose
 
-        # From https://raw.githubusercontent.com/Tribler/gumby/devel/scripts/run_nosetests_for_jenkins.sh
-        NOSEARGS_COMMON = "--with-xunit --all-modules --traverse-namespace --cover-package=Tribler --cover-tests --cover-inclusive"
-        NOSEARGS = "--verbose --with-xcoverage --xcoverage-file=" + OUTPUT_DIR + "/coverage.xml --xunit-file=" + OUTPUT_DIR + "/nosetests.xml " + NOSEARGS_COMMON
+            # Clean output directory
+            OUTPUT_DIR = os.path.abspath('output')
+            if os.path.exists(OUTPUT_DIR):
+                shutil.rmtree(OUTPUT_DIR, ignore_errors=True)
+            os.mkdir(OUTPUT_DIR)
 
-        os.environ['NOSE_LOGFORMAT'] = "%(levelname)-7s %(created)d %(module)15s:%(name)s:%(lineno)-4d %(message)s"
+            # From https://raw.githubusercontent.com/Tribler/gumby/devel/scripts/run_nosetests_for_jenkins.sh
+            NOSEARGS_COMMON = "--with-xunit --all-modules --traverse-namespace --cover-package=Tribler --cover-tests --cover-inclusive"
+            NOSEARGS = "--verbose --with-xcoverage --xcoverage-file=" + OUTPUT_DIR + "/coverage.xml --xunit-file=" + OUTPUT_DIR + "/nosetests.xml " + NOSEARGS_COMMON
 
-        TEST_DIR = os.path.abspath('lib/python2.7/site-packages/Tribler/Test')
-        NOSEARGS = '--where=' + TEST_DIR + ' ' + NOSEARGS  # --nocapture --nologcapture
-        nose.run(argv=NOSEARGS.split())
+            os.environ['NOSE_LOGFORMAT'] = "%(levelname)-7s %(created)d %(module)15s:%(name)s:%(lineno)-4d %(message)s"
+
+            TEST_DIR = os.path.abspath('lib/python2.7/site-packages/Tribler/Test')
+            NOSEARGS = '--where=' + TEST_DIR + ' ' + NOSEARGS  # --nocapture --nologcapture
+
+            nose.run(argv=NOSEARGS.split())
+
+        test_inner()
 
 
 if __name__ == '__main__':
