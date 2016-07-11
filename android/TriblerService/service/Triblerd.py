@@ -32,6 +32,10 @@ class Triblerd(object):
         import shutil
         import nose
 
+        import _locale
+        import locale
+        locale.setlocale(locale.LC_ALL, 'en_US')
+
         # Clean output directory
         OUTPUT_DIR = os.path.abspath('output')
         if os.path.exists(OUTPUT_DIR):
