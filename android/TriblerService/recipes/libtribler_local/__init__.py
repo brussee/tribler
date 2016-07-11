@@ -14,12 +14,13 @@ class LocalTriblerRecipe(PythonRecipe):
 
     depends = ['apsw', 'cryptography', 'libsodium', 'libtorrent', 'm2crypto',
                'netifaces', 'openssl', 'pil', 'pycrypto', 'pyleveldb', 'python2',
-               'setuptools', 'twisted', 'coverage',
+               'setuptools', 'twisted', 'coverage', 'functools-lru-cache',
               ]
 
     python_depends = ['chardet', 'cherrypy', 'configobj', 'decorator', 'feedparser',
                       'libnacl', 'pyasn1', 'six', 'pbr', 'funcsigs', 'mock', 'nose',
-                      'kid', 'pylint', 'nosexunit', 'nosexcover',
+                      'pygments', 'astroid', 'mccabe', 'isort', 'kid', 'pylint',
+                      'configparser', 'nosexunit', 'nosexcover',
                      ]
 
     site_packages_name = 'Tribler'
