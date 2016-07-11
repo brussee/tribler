@@ -17,7 +17,7 @@ class LocalTriblerRecipe(PythonRecipe):
                'setuptools', 'twisted',
               ]
 
-    python_tests_depends = ['mock', 'nose', 'coverage', 'nosexcover',
+    python_tests_depends = ['pbr', 'funcsigs', 'mock', 'nose', 'coverage', 'nosexcover',
                            ]
 
     python_depends = ['chardet', 'cherrypy', 'configobj', 'decorator', 'feedparser',
