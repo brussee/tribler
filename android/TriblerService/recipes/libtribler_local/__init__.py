@@ -22,7 +22,7 @@ class LocalTriblerRecipe(PythonRecipe):
 
     python_depends = ['chardet', 'cherrypy', 'configobj', 'decorator', 'feedparser',
                       'libnacl', 'pyasn1', 'six',
-                     ]
+                     ] + python_tests_depends
 
     site_packages_name = 'Tribler'
 
