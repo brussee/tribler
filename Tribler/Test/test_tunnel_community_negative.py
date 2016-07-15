@@ -41,6 +41,7 @@ class TestTunnelCommunityNegative(TestTunnelBase):
 
         self.startTest(do_create_local_torrent)
 
+    @skip("LevelDBError: IO error: lock collected_metadata/LOCK: already held by process")
     def test_anon_download_without_relays(self):
         def take_second_screenshot():
             self.screenshot('Networkgraph after an anonymous libtorrent download without relays')
