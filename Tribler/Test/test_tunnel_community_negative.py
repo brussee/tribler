@@ -11,6 +11,7 @@ from Tribler.community.tunnel.hidden_community import HiddenTunnelCommunity
 
 class TestTunnelCommunityNegative(TestTunnelBase):
 
+    @skip("wx gui removed")
     def test_anon_download_exitnode_changeofmind(self):
 
         def changed_my_mind(tunnel_communities):

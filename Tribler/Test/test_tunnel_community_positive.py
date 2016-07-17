@@ -49,6 +49,7 @@ class TestTunnelCommunityPositive(TestTunnelBase):
 
         self.startTest(replace_socks)
 
+    @skip("wx gui removed")
     def test_anon_download(self):
         def take_second_screenshot():
             self.screenshot('Network graph after an anonymous libtorrent download ')
