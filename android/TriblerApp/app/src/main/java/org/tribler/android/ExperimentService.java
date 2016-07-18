@@ -5,6 +5,8 @@ import android.content.Intent;
 
 import org.kivy.android.PythonService;
 
+import java.io.File;
+
 public class ExperimentService extends PythonService {
 
     public static void start(Context ctx) {
@@ -12,13 +14,17 @@ public class ExperimentService extends PythonService {
         Intent intent = new Intent(ctx, ExperimentService.class);
         intent.putExtra("androidPrivate", argument);
         intent.putExtra("androidArgument", argument);
-        intent.putExtra("pythonName", "ExperimentMultiChainScale");
+        intent.putExtra("pythonName", "Gumby");
         intent.putExtra("pythonHome", argument);
         intent.putExtra("pythonPath", argument + ":" + argument + "/lib");
-        intent.putExtra("pythonServiceArgument", "{'blocks_in_thousands': 10}");
-        intent.putExtra("serviceEntrypoint", "experiment.py");
-        intent.putExtra("serviceTitle", "Tribler experiment: MultiChainScale");
-        intent.putExtra("serviceDescription", "Running with: blocks_in_thousands=10");
+        // Clean output dir
+        File dir = new File(argument, "../output");
+        dir.mkdirs();
+        String OUTPUT_DIR = dir.getAbsolutePath();
+        intent.putExtra("pythonServiceArgument", OUTPUT_DIR);
+        intent.putExtra("serviceEntrypoint", "process_guard.py");
+        intent.putExtra("serviceTitle", "Gumby");
+        intent.putExtra("serviceDescription", "");
         intent.putExtra("serviceIconId", R.mipmap.ic_service);
         ctx.startService(intent);
     }
