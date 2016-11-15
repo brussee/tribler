@@ -353,7 +353,10 @@ public class MainActivity extends BaseActivity implements Handler.Callback {
                     case Activity.RESULT_OK:
                         Log.v("videoResult", MyUtils.intentToString(data));
                         Toast.makeText(this, String.format("Video saved to: %s", data.getDataString()), Toast.LENGTH_LONG).show();
-                        askUserToPublishVideo(data);
+                        // Publish video immediately
+                        data.setAction(ACTION_PUBLISH);
+                        onNewIntent(data);
+                        //askUserToPublishVideo(data);
                         return;
 
                     case Activity.RESULT_CANCELED:
