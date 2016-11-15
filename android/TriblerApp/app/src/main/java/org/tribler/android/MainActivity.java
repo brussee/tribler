@@ -211,7 +211,12 @@ public class MainActivity extends BaseActivity implements Handler.Callback {
                         NdefRecord[] records = ((NdefMessage) rawMsg).getRecords();
                         String dispersyCid = new String(records[0].getPayload());
 
-                        askUserToSubscribe(dispersyCid, getString(R.string.info_received_channel));
+                        // Subscribe to channel immediately
+                        Intent subscribeIntent = MyUtils.viewChannelIntent(dispersyCid, -1, getString(R.string.info_received_channel), false);
+                        subscribeIntent.setAction(ChannelActivity.ACTION_SUBSCRIBE);
+                        startActivityForResult(subscribeIntent, SUBSCRIBE_TO_CHANNEL_ACTIVITY_REQUEST_CODE);
+
+                        //askUserToSubscribe(dispersyCid, getString(R.string.info_received_channel));
                     }
                 }
                 return;
