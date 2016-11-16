@@ -606,7 +606,8 @@ public class MyChannelFragment extends DefaultInteractionListFragment {
                         return;
 
                     case Activity.RESULT_CANCELED:
-                        askUserToCreateMyChannel();
+                        // Do nothing
+                        //askUserToCreateMyChannel();
                         return;
                 }
                 return;
