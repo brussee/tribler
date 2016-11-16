@@ -634,6 +634,9 @@ public class MainActivity extends BaseActivity implements Handler.Callback {
     public void navShutdownClicked(MenuItem item) {
         drawer.closeDrawer(GravityCompat.START);
         Intent shutdown = new Intent(Intent.ACTION_SHUTDOWN);
+        // Shutdown immediately
+        onNewIntent(shutdown);
+        /*
         // Ask user to confirm shutdown
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.dialog_shutdown);
@@ -645,6 +648,7 @@ public class MainActivity extends BaseActivity implements Handler.Callback {
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+        */
     }
 
     public void btnMyChannelAddClicked(MenuItem item) {
