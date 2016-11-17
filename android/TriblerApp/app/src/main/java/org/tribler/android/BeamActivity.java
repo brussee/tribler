@@ -38,7 +38,7 @@ public class BeamActivity extends BaseActivity {
             _nfcAdapter = nfcManager.getDefaultAdapter();
             _nfcAdapter.setOnNdefPushCompleteCallback(nfcEvent -> {
                 // Exit BeamActivity
-                finish();
+                //finish();
             }, this);
         }
     }
