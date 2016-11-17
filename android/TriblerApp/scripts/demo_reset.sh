@@ -6,5 +6,7 @@ do
     . ./phone$VAR_i.sh
     $ADB shell date
     date
-    $ADB logcat -d -v time tag long | grep "V/AddedToChannel" >> phone$VAR_i.dat
+    #$ADB root
+    $ADB logcat -c
+    #./update.sh
 done
